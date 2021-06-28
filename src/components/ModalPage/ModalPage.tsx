@@ -26,6 +26,11 @@ export interface ModalPageProps extends HTMLAttributes<HTMLDivElement>, Adaptivi
    */
   dynamicContentHeight?: boolean;
   getModalContentRef?: Ref<HTMLDivElement>;
+
+  /**
+   * Показывать ли кнопку Закрыть на десктопе и мобильном устройстве
+   */
+  showCloseButton?: boolean;
 }
 
 const warn = warnOnce('ModalPage');
@@ -44,6 +49,7 @@ const ModalPage: FC<ModalPageProps> = (props: ModalPageProps) => {
     dynamicContentHeight,
     getModalContentRef,
     nav,
+    showCloseButton,
     ...restProps
   } = props;
 
@@ -52,7 +58,6 @@ const ModalPage: FC<ModalPageProps> = (props: ModalPageProps) => {
   }, [children]);
 
   const isDesktop = viewWidth >= ViewWidth.SMALL_TABLET && (hasMouse || viewHeight >= ViewHeight.MEDIUM);
-  const canShowCloseBtn = viewWidth >= ViewWidth.SMALL_TABLET;
 
   const modalContext = useContext(ModalRootContext);
   const { refs } = useModalRegistry(getNavId(props, warn), ModalType.PAGE);
@@ -77,7 +82,8 @@ const ModalPage: FC<ModalPageProps> = (props: ModalPageProps) => {
               </div>
             </div>
           </div>
-          {canShowCloseBtn && <ModalDismissButton onClick={onClose || modalContext.onClose} />}
+          {showCloseButton &&
+            <ModalDismissButton isMobile={!isDesktop} onClick={onClose || modalContext.onClose} />}
         </div>
       </div>
     </div>
@@ -86,6 +92,7 @@ const ModalPage: FC<ModalPageProps> = (props: ModalPageProps) => {
 
 ModalPage.defaultProps = {
   settlingHeight: 75,
+  showCloseButton: true,
 };
 
 export default withAdaptivity(ModalPage, {

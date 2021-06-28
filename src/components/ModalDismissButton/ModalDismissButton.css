@@ -1,8 +1,6 @@
 .ModalDismissButton {
   position: absolute;
   justify-content: center;
-  top: 0;
-  right: -56px;
   width: 56px;
   height: 56px;
   padding: 18px;
@@ -34,4 +32,14 @@
 
 .ModalDismissButton--active {
   opacity: 1;
+}
+
+.ModalDismissButton--desktop {
+  top: 0;
+  right: -56px;
+}
+
+.ModalDismissButton--mobile {
+  top: -56px;
+  right: 0;
 }
