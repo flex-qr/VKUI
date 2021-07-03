@@ -40,6 +40,6 @@
 }
 
 .ModalDismissButton--mobile {
-  top: -56px;
-  right: 0;
+  position: sticky;
+  top: 0;
 }

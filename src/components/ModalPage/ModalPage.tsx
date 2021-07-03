@@ -70,6 +70,11 @@ const ModalPage: FC<ModalPageProps> = (props: ModalPageProps) => {
       })}
     >
       <div vkuiClass="ModalPage__in-wrap" ref={refs.innerElement}>
+        {showCloseButton && !isDesktop &&
+          <ModalDismissButton
+            isMobile={!isDesktop}
+            onClick={onClose || modalContext.onClose} />}
+
         <div vkuiClass="ModalPage__in">
           <div vkuiClass="ModalPage__header" ref={refs.headerElement}>
             {header}
@@ -82,8 +87,11 @@ const ModalPage: FC<ModalPageProps> = (props: ModalPageProps) => {
               </div>
             </div>
           </div>
-          {showCloseButton &&
-            <ModalDismissButton isMobile={!isDesktop} onClick={onClose || modalContext.onClose} />}
+
+          {showCloseButton && isDesktop &&
+            <ModalDismissButton
+              isMobile={!isDesktop}
+              onClick={onClose || modalContext.onClose} />}
         </div>
       </div>
     </div>
