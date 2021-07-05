@@ -306,7 +306,8 @@ class ModalRootTouchComponent extends Component<ModalRootProps & DOMProps, Modal
       translateY = translateYFrom;
     } else {
       const headerHeight = modalState.headerElement.offsetHeight;
-      const height = contentHeight + headerHeight;
+      const closeButtonHeight = modalState.closeButton ? modalState.closeButton.offsetHeight : 0;
+      const height = contentHeight + headerHeight + closeButtonHeight;
 
       translateYFrom = 100 - height / modalState.innerElement.parentElement.offsetHeight * 100;
       translateY = translateYFrom;

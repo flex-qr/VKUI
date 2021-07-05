@@ -3,7 +3,7 @@ import { getClassName } from '../../helpers/getClassName';
 import { classNames } from '../../lib/classNames';
 import { ModalRootContext, useModalRegistry } from '../ModalRoot/ModalRootContext';
 import { usePlatform } from '../../hooks/usePlatform';
-import { withAdaptivity, AdaptivityProps, ViewHeight, ViewWidth } from '../../hoc/withAdaptivity';
+import { AdaptivityProps, ViewHeight, ViewWidth, withAdaptivity } from '../../hoc/withAdaptivity';
 import ModalDismissButton from '../ModalDismissButton/ModalDismissButton';
 import { Ref } from '../../types';
 import { multiRef } from '../../lib/utils';
@@ -71,9 +71,11 @@ const ModalPage: FC<ModalPageProps> = (props: ModalPageProps) => {
     >
       <div vkuiClass="ModalPage__in-wrap" ref={refs.innerElement}>
         {showCloseButton && !isDesktop &&
+        <div ref={refs.closeButton}>
           <ModalDismissButton
             isMobile={!isDesktop}
-            onClick={onClose || modalContext.onClose} />}
+            onClick={onClose || modalContext.onClose} />
+        </div>}
 
         <div vkuiClass="ModalPage__in">
           <div vkuiClass="ModalPage__header" ref={refs.headerElement}>
@@ -89,9 +91,9 @@ const ModalPage: FC<ModalPageProps> = (props: ModalPageProps) => {
           </div>
 
           {showCloseButton && isDesktop &&
-            <ModalDismissButton
-              isMobile={!isDesktop}
-              onClick={onClose || modalContext.onClose} />}
+          <ModalDismissButton
+            isMobile={!isDesktop}
+            onClick={onClose || modalContext.onClose} />}
         </div>
       </div>
     </div>

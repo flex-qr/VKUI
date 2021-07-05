@@ -10,6 +10,7 @@ export type ModalsState = { [index: string]: ModalsStateEntry };
 export interface ModalElements {
   modalElement?: HTMLElement | null;
   innerElement?: HTMLElement | null;
+  closeButton?: HTMLElement | null;
   headerElement?: HTMLElement | null;
   contentElement?: HTMLElement | null;
   footerElement?: HTMLElement | null;

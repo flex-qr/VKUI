@@ -37,6 +37,7 @@ export function useModalRegistry(id: string, type: ModalType) {
     modalElement: (e) => elements.modalElement = e,
     innerElement: (e) => elements.innerElement = e,
     headerElement: (e) => elements.headerElement = e,
+    closeButton: (e) => elements.closeButton = e,
     contentElement: (e) => elements.contentElement = e,
     footerElement: (e) => elements.footerElement = e,
   }).current;
