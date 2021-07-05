@@ -40,7 +40,7 @@
   max-width: 100%;
   margin: 0 auto;
   background: var(--background_content);
-  overflow: visible;
+  overflow: auto;
   position: relative;
   box-sizing: border-box;
   height: 100%;
